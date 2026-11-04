@@ -1,5 +1,5 @@
-# Lower bounds only. Lock exact versions for reproducible builds:
-#   pip install uv && uv pip compile requirements.txt -o requirements.lock
+# Lower bounds only. Exact pins live in requirements.lock / requirements-dev.lock.
+# Regenerate after editing: uv pip compile requirements.txt -o requirements.lock --python-version 3.12
 fastapi>=0.115
 uvicorn[standard]>=0.30
 python-multipart>=0.0.9

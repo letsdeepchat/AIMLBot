@@ -9,11 +9,11 @@ import uuid
 from contextlib import asynccontextmanager
 from pathlib import Path
 
+import pandas as pd
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-import pandas as pd
 from pydantic import BaseModel
 
 from quest_core import advisor as adv

@@ -10,3 +10,4 @@ mlruns/
 *.egg-info/
 *.db
 .DS_Store
+*.zip
