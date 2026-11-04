@@ -1,5 +1,5 @@
 # ---- UI build ---------------------------------------------------------------
-FROM node:22-alpine AS ui
+FROM node:26-alpine AS ui
 WORKDIR /ui
 COPY frontend/package*.json ./
 RUN npm ci --no-audit --no-fund
