@@ -10,3 +10,6 @@ mlruns/
 *.egg-info/
 *.db
 .DS_Store
+*.zip
+.coverage
+.ruff_cache/

@@ -113,12 +113,12 @@ That dataset has planted covariate shift and a repeating `customer_id`, so most 
 # API with jobs running in-process (no Redis needed)
 cd backend
 python -m venv .venv && source .venv/bin/activate
-pip install -r requirements-dev.txt
+pip install -r requirements-dev.lock
 QUEST_JOB_BACKEND=inline uvicorn app.main:app --reload --port 8000
 
 # UI, in a second terminal
 cd frontend
-npm install
+npm ci
 npm run dev        # http://localhost:5173, forwards /api to :8000
 ```
 
@@ -179,8 +179,11 @@ examples/          sample challenge data
 
 ## Before you rely on it
 
-- Requirements are lower bounds. Lock exact versions on first install (`uv pip compile`, and commit
-  `package-lock.json`), and check `npm outdated` since the UI pins were chosen without registry access.
+- Dependencies are locked. `backend/requirements.txt` and `requirements-dev.txt` hold the lower bounds;
+  `requirements.lock` (Docker) and `requirements-dev.lock` (CI, local dev) hold the exact pins for Python 3.12 on
+  Linux. After changing a bound, regenerate both with
+  `uv pip compile requirements.txt -o requirements.lock --python-version 3.12` (and the same for `-dev`).
+  The UI is locked by `frontend/package-lock.json`; CI and Docker use `npm ci`.
 - Newer MLflow 3.x releases may reject requests whose Host header isn't localhost. If the worker can't log runs,
   start the server with `--allowed-hosts "mlflow,mlflow:5000,localhost,localhost:5000"`.
 - Group statistics include the row itself in its group's statistics on the training fold. That's standard

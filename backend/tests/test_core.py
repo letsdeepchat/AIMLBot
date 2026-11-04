@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 
 from quest_core import ChallengeSpec, run_analysis, run_baselines
-from quest_core.cv_designer import design_cv, make_splits, adversarial_holdout_split
+from quest_core.cv_designer import adversarial_holdout_split, design_cv, make_splits
 from quest_core.shift import psi
 from quest_core.univariate import univariate_strength
 

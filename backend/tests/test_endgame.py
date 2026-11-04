@@ -8,8 +8,8 @@ import numpy as np
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import KFold
 
-from quest_core import run_baselines, run_experiment
 from quest_core import endgame as eg
+from quest_core import run_baselines, run_experiment
 from quest_core.experiments import create_experiment
 from tests.test_experiments import _setup
 
