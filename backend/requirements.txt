@@ -1,7 +1,7 @@
 # Lower bounds only. Exact pins live in requirements.lock / requirements-dev.lock.
 # Regenerate after editing: uv pip compile requirements.txt -o requirements.lock --python-version 3.12
 fastapi>=0.115
-uvicorn[standard]>=0.30
+uvicorn[standard]>=0.54.0
 python-multipart>=0.0.9
 pandas>=2.2
 numpy>=1.26
