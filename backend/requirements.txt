@@ -1,0 +1,15 @@
+# Lower bounds only. Lock exact versions for reproducible builds:
+#   pip install uv && uv pip compile requirements.txt -o requirements.lock
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pandas>=2.2
+numpy>=1.26
+scipy>=1.13
+scikit-learn>=1.5
+pyarrow>=16
+lightgbm>=4.5
+catboost>=1.2.7
+mlflow>=2.16
+redis>=5.0
+rq>=1.16

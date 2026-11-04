@@ -1,0 +1,9 @@
+{
+  "name": "Quest Copilot",
+  "short_name": "Quests",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F6F3",
+  "theme_color": "#1F4FD1",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

@@ -1,0 +1,44 @@
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      QUEST_JOB_BACKEND: rq
+      REDIS_URL: redis://redis:6379/0
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    volumes: [quest-data:/data]
+    depends_on: [redis, mlflow]
+
+  worker:
+    build: .
+    command: ["python", "-m", "app.worker"]
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      QUEST_JOB_BACKEND: rq
+      REDIS_URL: redis://redis:6379/0
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    volumes: [quest-data:/data]
+    depends_on: [redis, mlflow]
+
+  redis:
+    image: redis:7.4-alpine
+    volumes: [redis-data:/data]
+
+  mlflow:
+    build: .
+    command: >
+      mlflow server --host 0.0.0.0 --port 5000
+      --backend-store-uri sqlite:////mlflow/mlflow.db
+      --artifacts-destination /mlflow/artifacts
+    ports: ["5000:5000"]
+    volumes: [mlflow-data:/mlflow]
+
+volumes:
+  quest-data:
+  redis-data:
+  mlflow-data:
